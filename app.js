@@ -8,7 +8,9 @@ const dbURL = `mongodb://localhost:27017/blogs`;
 const blogRouter = require('./routes/blogRouter');
 
 mongoose.connect(dbURL)
-.then(()=>app.listen(PORT, ()=>console.log("listening...........")))
+.then(()=>app.listen(PORT,
+     ()=>console.log("listening...........")
+    ))
 .catch(err=>console.log(err.message));
 
 app.use(express.json());
