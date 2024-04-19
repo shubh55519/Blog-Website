@@ -1,3 +1,4 @@
+console.log('BlogRouter');
 const express = require('express');
 const blogController  = require('../controllers/blogController');
 

@@ -13,7 +13,7 @@ const userSchema = new mongoose.Schema({
     },
     password:{
         type: String,
-        reuired: true,
+        required: true,
         minlength: 6
     },
     photo:{
@@ -26,5 +26,5 @@ const userSchema = new mongoose.Schema({
 
 })
 
-const user_Schema = mongoose.model('user_Schema', userSchema)
-module.exports = user_Schema;
+const User = mongoose.model('User', userSchema)
+module.exports = User;

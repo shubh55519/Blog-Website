@@ -6,5 +6,5 @@ const userTypeSchema = new mongoose.Schema({
     }
 })
 
-const user_Type_Schema = mongoose.model('user_Type_Schema', userTypeSchema)
-module.exports = user_Type_Schema;
+const User_Type = mongoose.model('User_Type', userTypeSchema)
+module.exports = User_Type;

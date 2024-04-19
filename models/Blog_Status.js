@@ -12,5 +12,5 @@ const blogStatusSchema = new mongoose.Schema({
     }
 })
 
-const blog_Status_Schema = mongoose.model('blog_Status_Schema', blogStatusSchema)
-module.exports = blog_Status_Schema;
+const Blog_Status = mongoose.model('Blog_Status', blogStatusSchema)
+module.exports = Blog_Status;

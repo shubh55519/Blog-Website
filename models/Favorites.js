@@ -5,7 +5,8 @@ const favoritesSchema = new mongoose.Schema({
         tpye: String,
     },
     createdAt:{
-        createdAt: Date.now()
+        type: Date,
+        default: Date.now()
     },
     blog_id:{
         type: mongoose.Schema.Types.ObjectId,
@@ -16,5 +17,5 @@ const favoritesSchema = new mongoose.Schema({
         ref:"user_Schema"
     }
 })
-const favorites_Schema = mongoose.model('favorites_Schema', favoritesSchema)
-module.exports = favorites_Schema;  
+const Favorites = mongoose.model('Favorites', favoritesSchema)
+module.exports = Favorites;  

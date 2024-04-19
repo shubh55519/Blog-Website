@@ -9,10 +9,12 @@ const blogSchema = new mongoose.Schema({
         tpye: String,
     },
     createdAt:{
-        createdAt: Date.now()
+        type: Date,
+        default: Date.now()
     },
     UpdatedAt:{
-        UpdatedAt: Date.now()
+        type:Date,
+        default: Date.now()
     },
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
@@ -30,8 +32,8 @@ const blogSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"blog_Visibility_Schema"
     },
-    
+
 })
 
-const blog_Schema = mongoose.model('blog_Schema', blogSchema)
-module.exports = blog_Schema;
+const Blog = mongoose.model('Blog', blogSchema)
+module.exports = Blog;

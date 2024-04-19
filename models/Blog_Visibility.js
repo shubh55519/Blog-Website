@@ -6,5 +6,5 @@ const blogVisibiltySchema = new mongoose.Schema({
     }
 })
 
-const blog_Visibility_Schema = mongoose.model('blog_Visibility_Schema', blogVisibiltySchema)
-module.exports = blog_Visibility_Schema;
+const Blog_Visibility = mongoose.model('Blog_Visibility', blogVisibiltySchema)
+module.exports = Blog_Visibility;

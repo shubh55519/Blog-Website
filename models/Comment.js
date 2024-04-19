@@ -13,8 +13,9 @@ const commentSchema = new mongoose.Schema({
         ref:"user_Schema"
     },
     createdAt:{
-        createdAt: Date.now()
+        type:Date,
+        default: Date.now()
     }
 })
-const comment_Schema = mongoose.model('comment_Schema', commentSchema)
-module.exports = comment_Schema;
+const Comment = mongoose.model('Comment', commentSchema)
+module.exports = Comment;
