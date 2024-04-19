@@ -7,6 +7,13 @@ const router = express.Router();
 router
 .route('/')
 .get(blogController.getAllBlogs)
-// .post(blogController)
+.post(blogController.createBlog)
+.delete(blogController.deleteBlog)
+
+router
+.route('/:id')
+.get(blogController.getBlog)
+.patch(blogController.updateBlog)
+.delete(blogController.deleteBlog)
 
 module.exports = router;

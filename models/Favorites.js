@@ -10,11 +10,11 @@ const favoritesSchema = new mongoose.Schema({
     },
     blog_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"blog_Schema"
+        ref:"Blog"
     },
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"user_Schema"
+        ref:"User"
     }
 })
 const Favorites = mongoose.model('Favorites', favoritesSchema)

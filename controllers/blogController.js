@@ -1,4 +1,5 @@
 console.log('BlogController');
+const { ObjectId } = require("mongodb");
 const Blog = require("../models/Blog");
 
 exports.getAllBlogs = async (req, res) =>{
@@ -18,6 +19,14 @@ exports.createBlog = async (req, res) =>{
     try {
         const blogPost = await blog.save();
         res.json(blogPost);
+    } catch (err) {
+        console.log('Err' + err);
+    }
+}
+exports.deleteBlog = async (req, res) =>{
+    try {
+        const deleteBlog = await Blog.deleteOne(ObjectId)
+        res.json(deleteBlog)
     } catch (err) {
         console.log('Err' + err);
     }

@@ -15,4 +15,4 @@ mongoose.connect(dbURL)
 
 app.use(express.json());
 
-app.use('/blogs', blogRouter)
+app.use('/api/blogs', blogRouter)

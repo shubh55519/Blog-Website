@@ -18,19 +18,19 @@ const blogSchema = new mongoose.Schema({
     },
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"user_Schema"
+        ref:"User"
     },
     category_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"category_Schema"
+        ref:"Category"
     },
     blog_status_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"blog_Status_Schema"
+        ref:"Blog_Status"
     },
     blog_visibility_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"blog_Visibility_Schema"
+        ref:"Blog_Visibility"
     },
 
 })

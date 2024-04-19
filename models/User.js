@@ -21,7 +21,7 @@ const userSchema = new mongoose.Schema({
     },
     user_type_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref: "user_Type_Schema"
+        ref: "User_type"
     }
 
 })

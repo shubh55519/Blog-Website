@@ -6,11 +6,11 @@ const commentSchema = new mongoose.Schema({
     },
     blog_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"blog_Schema"
+        ref:"Blog"
     },
     user_id:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"user_Schema"
+        ref:"User"
     },
     createdAt:{
         type:Date,
