@@ -4,7 +4,7 @@ const router = express.Router();
 
 router
 .route('/')
-.post(commentController.postComment);
+.post(commentController.createComment);
 
 router
 .route('/:id')

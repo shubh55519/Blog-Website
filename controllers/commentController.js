@@ -1,6 +1,6 @@
 const Comment = require("../models/Comment");
 
-exports.postComment = async(req, res) =>{
+exports.createComment = async(req, res) =>{
     try {
         const comment = await Comment.create({
             comment: req.body.comment
@@ -14,7 +14,9 @@ exports.postComment = async(req, res) =>{
 exports.updateComment = async(req, res) =>{
     const id = req.param.id;
     try {
-        // const comment = await Comment.
+        const comment = await Comment.updateOne({
+            
+        })
     } catch (err) {
         console.log('Err' + err.message);
     }
