@@ -6,6 +6,7 @@ const app = express();
 const dbURL = `mongodb://localhost:27017/blogs`;
 
 const blogRouter = require('./routes/blogRouter');
+const commentRouter = require('./routes/commentRouter');
 
 mongoose.connect(dbURL)
 .then(()=>app.listen(PORT,
@@ -16,3 +17,4 @@ mongoose.connect(dbURL)
 app.use(express.json());
 
 app.use('/api/blogs', blogRouter)
+app.use('/api/comments', commentRouter)

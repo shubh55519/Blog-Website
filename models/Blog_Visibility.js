@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const blogVisibiltySchema = new mongoose.Schema({
     visibilty:{
-        type: Boolean
+        type: String
     }
 })
 

@@ -1,13 +1,7 @@
 const mongoose = require("mongoose");
 
 const favoritesSchema = new mongoose.Schema({
-    comment:{
-        tpye: String,
-    },
-    createdAt:{
-        type: Date,
-        default: Date.now()
-    },
+   
     blog_id:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"Blog"
@@ -16,6 +10,6 @@ const favoritesSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"User"
     }
-})
+}, {timestamps: true})
 const Favorites = mongoose.model('Favorites', favoritesSchema)
 module.exports = Favorites;  

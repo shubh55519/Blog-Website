@@ -1,7 +1,7 @@
 const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
-    user_type:{
+    name:{
         type: String
     }
 })

@@ -1,14 +1,8 @@
 const mongoose = require("mongoose");
 
 const blogStatusSchema = new mongoose.Schema({
-    approved:{
-        type:Boolean
-    },
-    rejected:{
-        type: Boolean
-    },
-    draft:{
-        type: Boolean
+    status:{
+        type: String
     }
 })
 
