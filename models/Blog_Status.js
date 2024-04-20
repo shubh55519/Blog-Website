@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const blogStatusSchema = new mongoose.Schema({
     status:{
-        type: String
+        type: String  // approved || reject || draft 
     }
 })
 

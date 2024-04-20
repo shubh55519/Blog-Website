@@ -2,7 +2,7 @@ const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({
     name:{
-        type: String
+        type: String // will created by admin and access by user 
     }
 })
 

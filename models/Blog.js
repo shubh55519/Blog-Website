@@ -28,11 +28,13 @@ const blogSchema = new mongoose.Schema({
         type: mongoose.Schema.Types.ObjectId,
         ref:"Blog_Status"
     },
-    blog_visibility_id:{
-        type: mongoose.Schema.Types.ObjectId,
-        ref:"Blog_Visibility"
-    },
-
+    // blog_visibility_id:{
+    //     type: mongoose.Schema.Types.ObjectId,
+    //     ref:"Blog_Visibility"
+    // },
+    blog_visibility:{
+        type: Boolean
+    }
 })
 
 const Blog = mongoose.model('Blog', blogSchema)

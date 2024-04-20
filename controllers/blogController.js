@@ -3,6 +3,7 @@ const Blog = require("../models/Blog");
 
 exports.getAllBlogs = async (req, res) =>{
     try {
+        // if Anonymous || if Auth || if Admin
         const blogs = await  Blog.find();
         console.log(blogs);
         res.status(200).json(blogs)
@@ -12,6 +13,7 @@ exports.getAllBlogs = async (req, res) =>{
 }
 
 exports.getBlog = async (req, res)=>{
+    // if Anonymous || if Auth || if Admin
     const id = req.param.id;
     try {
         const blog = await Blog.findById(_id === id);
