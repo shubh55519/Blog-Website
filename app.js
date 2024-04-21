@@ -8,8 +8,9 @@ const dbURL = `mongodb://localhost:27017/blogs`;
 const blogRouter = require('./routes/blogRouter');
 const commentRouter = require('./routes/commentRouter');
 const favoriteRouter = require('./routes/favoriteRouter');
-const categoryRouter = require('./routes/categoryRouter');
+// const categoryRouter = require('./routes/categoryRouter');
 const adminRouter = require('./routes/adminRouter');
+const authRouter = require('./routes/authRouter');
 
 mongoose.connect(dbURL)
 .then(()=>app.listen(PORT,
@@ -22,5 +23,6 @@ app.use(express.json());
 app.use('/api/blogs', blogRouter) // protected for anonymus and all approved by admin for authenticated user
 app.use('/api/comments', commentRouter) 
 app.use('/api/favorites', favoriteRouter)
-app.use('/api/category', categoryRouter)
-app.use('/api/admin/blogs', adminRouter)
+// app.use('/api/category', categoryRouter)
+app.use('/api/admin/', adminRouter)
+app.use('/api/auth', authRouter)

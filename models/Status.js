@@ -4,7 +4,7 @@ const blogStatusSchema = new mongoose.Schema({
     status:{
         type: String  // approved || reject || draft 
     }
-})
+}, {timestamps: true})
 
-const Blog_Status = mongoose.model('Blog_Status', blogStatusSchema)
-module.exports = Blog_Status;
+const Status = mongoose.model('Status', blogStatusSchema)
+module.exports = Status;

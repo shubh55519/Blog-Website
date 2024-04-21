@@ -8,34 +8,24 @@ const blogSchema = new mongoose.Schema({
     content:{
         tpye: String,
     },
-    createdAt:{
-        type: Date,
-        default: Date.now()
-    },
-    UpdatedAt:{
-        type:Date,
-        default: Date.now()
-    },
-    user_id:{
+    creater:{ 
         type: mongoose.Schema.Types.ObjectId,
         ref:"User"
     },
-    category_id:{
+    category:{
         type: mongoose.Schema.Types.ObjectId,
         ref:"Category"
     },
-    blog_status_id:{
+    status:{
         type: mongoose.Schema.Types.ObjectId,
-        ref:"Blog_Status"
+        ref:"Status"
     },
-    // blog_visibility_id:{
-    //     type: mongoose.Schema.Types.ObjectId,
-    //     ref:"Blog_Visibility"
-    // },
-    blog_visibility:{
-        type: Boolean
+    visibility:{
+        type: mongoose.Schema.Types.ObjectId,
+        ref:"Visibility"
     }
-})
+    
+}, {timestamps: true})
 
 const Blog = mongoose.model('Blog', blogSchema)
 module.exports = Blog;

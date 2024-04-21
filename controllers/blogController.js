@@ -3,8 +3,9 @@ const Blog = require("../models/Blog");
 
 exports.getAllBlogs = async (req, res) =>{
     try {
-        // if Anonymous || if Auth || if Admin
-        const blogs = await  Blog.find();
+        // if Anonymous ==> || if Auth || if Admin
+        // net ninja code
+        const blogs = await  Blog.find({title:req.body.title});
         console.log(blogs);
         res.status(200).json(blogs)
     } catch (err) {
@@ -14,6 +15,16 @@ exports.getAllBlogs = async (req, res) =>{
 
 exports.getBlog = async (req, res)=>{
     // if Anonymous || if Auth || if Admin
+    const id = req.param.id;
+    try {
+        const blog = await Blog.findById(_id === id);
+        res.status(200).json(blog)
+    } catch (err) {
+        console.log('Err' + err.message);
+    }
+}
+exports.getMyBlogs = async (req, res)=>{
+    //  if Auth
     const id = req.param.id;
     try {
         const blog = await Blog.findById(_id === id);
@@ -36,6 +47,7 @@ exports.createBlog = async (req, res) =>{
         console.log('Err' + err.message);
     }
 }
+
 exports.deleteBlog = async (req, res) =>{
     const id = req.param.id;
     try {
