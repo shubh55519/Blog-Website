@@ -22,6 +22,21 @@ exports.getBlog = async (req, res) =>{
         console.log('Err '+ err.message);
     }
 }
+exports.deleteBlog = async (req, res) =>{
+    const id =  req.params.id;
+    try {
+        const deleteBlog = await Blogs.findByIdAndDelete(id)
+        console.log(deleteBlog);
+        if(!deleteBlog){
+            res.status(404).json({error: "Blog Not found"})
+        }else{
+            res.status(200).json({message: "Blog Deleted Successfully"})
+        }
+    } catch (err) {
+        console.log('deleteBlog =>Error-> ' + err.message);
+        res.status(500).json({ error: 'Internal Server Error' });
+    }
+}
 
 // Category
 exports.getAllCategory = async (req, res) =>{

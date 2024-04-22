@@ -6,7 +6,8 @@ const blogSchema = new mongoose.Schema({
         uppercase: true
     },
     content:{
-        tpye: String,
+        type: String,
+        required: true
     },
     creater:{ 
         type: mongoose.Schema.Types.ObjectId,

@@ -27,6 +27,8 @@ router
 router
 .route('/blogs/:id')  // Blog
 .get(adminController.getBlog)
+.delete(adminController.deleteBlog)
+
 
 router
 .route('/category/:id')  // Category
