@@ -1,3 +1,5 @@
+// console.log('categorySchema');
+
 const mongoose = require("mongoose");
 
 const categorySchema = new mongoose.Schema({

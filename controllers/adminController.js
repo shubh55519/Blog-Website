@@ -1,3 +1,4 @@
+// console.log('adminController');
 const Blogs = require('../models/Blog');
 const Category = require('../models/Category');
 const Status = require('../models/Status');

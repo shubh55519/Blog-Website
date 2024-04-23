@@ -1,3 +1,4 @@
+// console.log('favoritesController');
 const Favorites = require('../models/Favorites');
 
 exports.createFavorite = async(req, res)=>{

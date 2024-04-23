@@ -1,3 +1,5 @@
+// console.log('favoriteRouter');
+
 const express = require('express');
 const favoriteController = require('../controllers/favoriteController');
 const router = express.Router();

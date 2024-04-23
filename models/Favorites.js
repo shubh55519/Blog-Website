@@ -1,3 +1,5 @@
+// console.log('favoriteSchema');
+
 const mongoose = require("mongoose");
 
 const favoritesSchema = new mongoose.Schema({

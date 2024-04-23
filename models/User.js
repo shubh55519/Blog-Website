@@ -1,3 +1,5 @@
+// console.log('userSchema');
+
 const mongoose = require("mongoose");
 const bcrypt = require('bcrypt');
 

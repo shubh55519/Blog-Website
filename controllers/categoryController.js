@@ -1,3 +1,5 @@
+// console.log('categoryController');
+
 // const Category = require("../models/Category");
 
 // exports.getAllCategory = async(req, res)=>{

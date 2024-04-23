@@ -1,3 +1,5 @@
+// console.log('statusSchema');
+
 const mongoose = require("mongoose");
 
 const blogStatusSchema = new mongoose.Schema({

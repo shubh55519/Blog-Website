@@ -1,3 +1,5 @@
+// console.log('visibilitySchema');
+
 const mongoose = require("mongoose");
 
 const blogVisibiltySchema = new mongoose.Schema({

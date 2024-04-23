@@ -1,11 +1,12 @@
-console.log('BlogRouter');
+// console.log('BlogRouter');
 const express = require('express');
 const blogController  = require('../controllers/blogController');
+
 
 const router = express.Router();
 
 router
-.route('/')
+// .route('/')
 .get(blogController.getAllBlogs)
 .get(blogController.getMyBlogs)
 .post(blogController.createBlog)
