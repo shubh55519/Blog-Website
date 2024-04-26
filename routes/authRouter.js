@@ -10,6 +10,6 @@ router
 
 router
 .route('/login')
-.post(userController.login)
+.post(userController.login);
 
 module.exports = router;
