@@ -72,12 +72,31 @@ exports.createBlog = async (req, res) =>{
 }
 
 exports.deleteBlog = async (req, res) =>{
-    console.log(req.body);
+    
+    console.log('deleteBlog ',req.params.id);
     const id = req.params.id;
     // if user._id == 
     try {
-        await Blog.deleteOne( _id === id);
+        const user = await Blog.findById(id);
+        // console.log(user);
+        const deleteBlog = await Blog.deleteOne(user)
+        // console.log(deleteBlog);
+        res.status(200).json('Blog Deleted')
     } catch (err) {
         console.log('Err' + err.message);
+    }
+}
+
+exports.updateBlog = async(req, res)=>{
+    const id = req.params.id;
+    try {
+        const update = await Blog.findById(id);
+        update.title = req.body.title;
+        update.content = req.body.content;
+        const updatedBlog = await update.save();
+        console.log(updatedBlog);
+        res.status(200).json('You updated the blog')
+    } catch (err) {
+        console.log('Err: ',err.message);
     }
 }
