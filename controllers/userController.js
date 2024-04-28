@@ -17,16 +17,10 @@ exports.signup = async (req, res) => {
   
     try {
       const user = await User.create({name:name, email:email, password: password, isAdmin: isAdmin});
-      // const token = createToken(user);
       // res.cookie('jwt', token, { httpOnly : true, maxAge : maxAge * 1000});
-      // res.send(token.jwt);
-      // console.log('userCont => line 22->:token: ', token);
-      // console.log('userCont => line 23->:token.jwt: ', token.jwt);
       console.log('userCont Line 25: ',user._id);
       res.status(201).json({ user: user._id});
-      // res.status(201).json({user:user._id});
     } catch (err) {
-    //   const errors = handleError(err);
       res.status(400).json({err: err.message});
     }
   }
@@ -39,16 +33,12 @@ exports.login = async (req, res) => {
      const user = await User.login(email, password);
      const token = createToken(user._id);
     //  res.cookie('jwt', token, {httpOnly:true, maxAge:maxAge*1000});
-    //  res.send(token.jwt);
     console.log('userCont login=> line 41->:token: ', token);
     // console.log('userCont login=> line 42->:token.jwt : ', token.jwt);
     res.status(201).json({ token: token });
-      
-     console.log(user._id);
-    //  res.status(200).json({user : user._id});
+    //  console.log(user._id);
     } catch (error) {
       console.log(error.message);
-    //   const errors = handleError(error);
       res.status(400).json({error: error.message});
     }
   }

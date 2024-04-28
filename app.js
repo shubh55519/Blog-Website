@@ -26,7 +26,7 @@ app.use(express.json());
 
 
 // app.get('*', checkUser)
-app.use('/api/bloglist', bloglistRouter) // protected for anonymus fom db and all approved by admin for authenticated user
+app.use('/api/blog', bloglistRouter) // protected for anonymus fom db and all approved by admin for authenticated user
 app.use('/api/blog',requireAuth, blogRouter) // for auth user
 
 app.use('/api/comments', commentRouter) 

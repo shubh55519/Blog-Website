@@ -3,7 +3,7 @@ const bloglistController  = require('../controllers/bloglistController');
 const router = express.Router();
 
 router
-.route('/')
+.route('/all')
 .get(bloglistController.getAllBlogs)
 
 router

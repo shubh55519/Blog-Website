@@ -13,9 +13,7 @@ exports.getAllBlogs = async (req, res) =>{
         console.log("bloglistCont=> line 13-->: token",token);
             if(token){ // cookie is there and jwt 
                 jwt.verify(token, 'c3e3863ec9ac2510586d63a854148a1569e42bb4fd1c4f9002c9a0be8482618f',(notVerified, decodeToken)=>{
-                    // console.log(decodeToken);
                     if(notVerified){   // cookie is there and jwt but jwt does not verify
-                        console.log(notVerified);
                     console.log('jwt not verified');
                         filter = {
                             status: "6624da5cd39d33ee85c58151", // approved
@@ -38,11 +36,9 @@ exports.getAllBlogs = async (req, res) =>{
             }
         
         const blogs = await  Blog.find(filter).populate('category').populate('creater','-password -_id -email -createdAt -updatedAt -isAdmin -__v').populate('status').populate('visibility');
-        // console.log(blogs);
         res.status(200).json(blogs);
     } catch (err) {
-        console.log('bloglistCont=>line 44: Err -> ' + err);
-        // console.log('Err -> ' + err.message);
+        console.log('bloglistCont=>line 42: Err -> ' + err);
     }
 }
 
