@@ -78,14 +78,6 @@ exports.deleteCategory = async (req, res) =>{
 
 // Status
 
-exports.getAllStatus = async (req, res) =>{
-    try {
-        const statuses = await Status.find();
-        res.status(200).json(statuses);
-    } catch (err) {
-        console.log("getAllCategory => Err-> " + err.message);
-    }
-}
 
 exports.getStatus = async (req, res) =>{  
 
@@ -142,15 +134,6 @@ exports.deleteStatus = async (req, res) =>{
 }
 
 // Visibility
-
-exports.getAllVisibility = async (req, res) =>{
-    try {
-        const visibility = await Visibility.find();
-        res.status(200).json(visibility);
-    } catch (err) {
-        console.log('Err '+ err.message);
-    }
-} 
 
 exports.getVisibility = async (req, res) =>{  
 

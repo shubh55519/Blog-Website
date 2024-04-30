@@ -56,37 +56,46 @@ exports.getBlog = async (req, res)=>{
         const token = req.headers.jwt;
         const decodedToken = jwt.decode(token);
         console.log('decodedToken: ', decodedToken);
-        console.log('decodedToken.id: ', decodedToken.id);
-        console.log('decodedToken.isAdmin: ', decodedToken.isAdmin);
-        let filter;
-        
-    if(decodedToken.isAdmin==true){  // Admin
+
+    let filter;
+    if(decodedToken.isAdmin == true){  // Admin
         console.log('Admin');
         filter = {
+            _id: id,
             status: ["6624da5cd39d33ee85c58151", "6624da65d39d33ee85c58154", "6624da6cd39d33ee85c58157"], // approved   //reject   // draft
             visibility: ["6624ddb05ecb701aa0f79299","6624dda25ecb701aa0f79293","6624dda95ecb701aa0f79296"]  // protected  //public  //private
         }
-        const blog = await  Blog.find(filter).populate('category').populate('creater','-password -_id -email -createdAt -updatedAt -isAdmin -__v').populate('visibility','-_id').populate('status','-_id');
-        res.status(200).json(blog)
+        const blog = await Blog.findOne(filter)
+        .populate('category', '-createdAt -updatedAt -__v')
+        .populate('creater', '-password -_id -email -createdAt -updatedAt -__v')
+        .populate('visibility', '-_id')
+        .populate('status', '-_id');
+        res.status(200).json(blog);
     }
-    else if(decodedToken.id && decodedToken.isAdmin == false ){ // User
+    else if(decodedToken.isAdmin == false ){ // User
         console.log('User');
         filter = {
+            _id: id,
             status: ["6624da5cd39d33ee85c58151", "6624da65d39d33ee85c58154", "6624da6cd39d33ee85c58157"], // approved   //reject   // draft
             visibility: ["6624ddb05ecb701aa0f79299","6624dda25ecb701aa0f79293"]  // protected  //public
         }
-        const blog = await  Blog.findById(filter).populate('category').populate('creater','-password -_id -email -createdAt -updatedAt -isAdmin -__v').populate('visibility');
-        res.status(200).json(blog)
-    }else{
-        // filter = {
-        //     status: "6624da5cd39d33ee85c58151", // approved  
-        //     visibility: ["6624ddb05ecb701aa0f79299","6624dda25ecb701aa0f79293"]  // protected  //public
-        // }
-        const blog = await  Blog.findById(id).populate('creater','-password -_id -email -createdAt -updatedAt -isAdmin -__v');
+        const blog = await  Blog.findOne(filter)
+        .populate('category', '-createdAt -updatedAt -__v')
+        .populate('creater','-password -_id -email -createdAt -updatedAt -__v')
+        .populate('visibility', '-_id')
+        .populate('status', '-_id');
+        res.status(200).json(blog);
+    // }else if(decodedToken == null){
+    }else if(!decodedToken){
+        filter = {
+            _id: id,
+            status: "6624da5cd39d33ee85c58151", // approved  
+            visibility: "6624dda25ecb701aa0f79293"  // protected  //public
+        }
+        const blog = await  Blog.findOne(filter)
+        .populate('creater','-password -_id -email -createdAt -updatedAt -__v');
         res.status(200).json(blog)
     }
-
-    // const blog = await  Blog.find(filter).populate('category','-_id -createdAt -updatedAt -__v' ).populate('creater','-password -_id -email -createdAt -updatedAt -isAdmin -__v');
 
     } catch (err) {
         console.log('Err: ' + err.message);
