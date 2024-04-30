@@ -1,15 +1,16 @@
 // console.log('categoryController');
 
-// const Category = require("../models/Category");
+const Category = require("../models/Category");
 
-// exports.getAllCategory = async(req, res)=>{
-//     try {
-//         const category = await Category.find();
-//         res.status(200).json(category);
-//     } catch (err) {
-//         console.log('Err' + err);
-//     }
-// }
+exports.getAllCategory = async(req, res)=>{
+    try {
+        const category = await Category.find();
+        res.status(200).json(category);
+    } catch (err) {
+        console.log('Err' + err);
+    }
+}
+
 // exports.createCategory = async(req, res)=>{
 //     try {
 //        const category = await Category.create({

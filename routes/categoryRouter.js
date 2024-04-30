@@ -1,10 +1,10 @@
-// const express = require('express')
-// const router = express.Router();
-// const categoryRouter = require('../controllers/categoryController');
+const express = require('express')
+const router = express.Router();
+const categoryRouter = require('../controllers/categoryController');
 
-// router
-// .route('/')
-// .get(categoryRouter.getAllCategory)
+router
+.route('/')
+.get(categoryRouter.getAllCategory)
 // .post(categoryRouter.createCategory)
 
 // router
@@ -12,4 +12,4 @@
 // .patch(categoryRouter.updateCategory)
 // .delete(categoryRouter.deleteCategory)
 
-// module.exports = router;
+module.exports = router;

@@ -5,14 +5,7 @@ const Status = require('../models/Status');
 const Visibility = require('../models/Visibility');
 
 // Blogs
-exports.getAllBlogs = async (req, res) =>{
-    try {
-        const blogs = await Blogs.find();
-        res.status(200).json(blogs);
-    } catch (err) {
-        console.log('Err '+ err.message);
-    }
-}
+
 exports.getBlog = async (req, res) =>{  
 
     const id = req.params.id;
@@ -40,14 +33,7 @@ exports.deleteBlog = async (req, res) =>{
 }
 
 // Category
-exports.getAllCategory = async (req, res) =>{
-    try {
-        const categories = await Category.find();
-        res.status(200).json(categories);
-    } catch (err) {
-        console.log("getAllCategory => Err-> " + err.message);
-    }
-}
+
 exports.createCategory = async (req, res) =>{
     
     try {
