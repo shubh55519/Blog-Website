@@ -11,7 +11,6 @@ router
 
 router
 .route('/:id')
-// .get(blogController.getBlog)
 .patch(blogController.updateBlog)
 .delete(blogController.deleteBlog)
 

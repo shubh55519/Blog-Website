@@ -6,16 +6,6 @@ const Visibility = require('../models/Visibility');
 
 // Blogs
 
-exports.getBlog = async (req, res) =>{  
-
-    const id = req.params.id;
-    try {
-        const blog = await Blogs.findById(id);
-        res.status(200).json(blog);
-    } catch (err) {
-        console.log('Err '+ err.message);
-    }
-}
 exports.deleteBlog = async (req, res) =>{
     const id =  req.params.id;
     try {
@@ -51,9 +41,7 @@ exports.updateCategory = async (req, res) =>{
     const id = req.params.id;
     console.log(id);
     try {
-        const updatedCategory = await Category.findById(id); 
-        updatedCategory.name = req.body.name;
-        await updatedCategory.save();
+        const updatedCategory = await Category.updateOne({_id:id}, {name:req.body.name}); 
         res.status(200).json(updatedCategory)
     } catch (err) {
         console.log('updateCategory =>Err-> ' + err.message);
@@ -79,16 +67,7 @@ exports.deleteCategory = async (req, res) =>{
 // Status
 
 
-exports.getStatus = async (req, res) =>{  
 
-    const id = req.params.id;
-    try {
-        const status = await Status.findById(id);
-        res.status(200).json(status);
-    } catch (err) {
-        console.log('Err '+ err.message);
-    }
-}
 
 exports.createStatus = async (req, res) =>{
     

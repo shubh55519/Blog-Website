@@ -2,6 +2,18 @@ console.log('requireAuth');
 const jwt = require('jsonwebtoken');
 
 
+const adminAuth = (req, res, next) =>{
+    const token = req.headers.jwt;
+    console.log(token);
+    
+        const decodedToken = jwt.decode(token)
+        if(decodedToken.isAdmin){
+        next();
+        }else{
+            res.status(400).json({message:"Not Admin"});
+        }
+}
+
 const requireAuth = (req, res, next)=>{
     // const {name, email, password, isAdmin} = req.body;
     // console.log('requireAuth line 7: ',name, email, password, isAdmin);
@@ -22,11 +34,11 @@ const requireAuth = (req, res, next)=>{
     }
     if(loggedIn == false){
         console.log('loggedIn-false');
-        res.status(404).json({});
+        res.status(404).json({message:"Not a User"});
     }else{
         console.log('next()-running');
         next();
     }
 }
 
-module.exports = {requireAuth};
+module.exports = {requireAuth, adminAuth};

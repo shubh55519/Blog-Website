@@ -19,7 +19,6 @@ router
 
 router
 .route('/blogs/:id')  // Blog
-.get(adminController.getBlog)
 .delete(adminController.deleteBlog) // will put and merge with getMyBlogs delete
 
 router
@@ -29,7 +28,6 @@ router
 
 router
 .route('/blog-status/:id')  // Status
-.get(adminController.getStatus)  
 .patch(adminController.updateStatus)  
 .delete(adminController.deleteStatus)
 
