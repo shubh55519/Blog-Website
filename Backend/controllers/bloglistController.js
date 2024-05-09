@@ -1,8 +1,19 @@
-
 const jwt = require("jsonwebtoken");
 const Blog = require("../models/Blog");
 
 exports.getAllBlogs = async (req, res) => {
+    
+    const limit = req.query.limit;
+    const page= req.query.page;
+    const offset = (page - 1) * limit;
+    const sort = {}; // ex: {column name: ASC || DESC}
+    let name = req.query.name ;
+    let direction =  req.query.direction;
+    name ? (sort[name] = direction): null;  
+    direction ?  (sort[name]= direction) : null;
+
+    const match = new RegExp(req.query.search,"i");
+    // console.log(new RegExp(req.query.search ,"i"));
 
     try {
         let filter;
@@ -39,9 +50,12 @@ exports.getAllBlogs = async (req, res) => {
                 visibility: "6624dda25ecb701aa0f79293", //public
             }
         }
-
-        const blogs = await Blog.find(filter).select('category status visibility creater ');
+        // filter.$or = [{ name: match }, { content: match }];
+        let newFilter = {...filter, ...{$or :[{ title: match }, { content: match }]}}
+        
+        const blogs = await Blog.find(newFilter).skip(offset).limit(limit).sort(sort).select('category status visibility creater title createdAt updatedAt');
         res.status(200).json(blogs);
+
     } catch (err) {
         console.log('bloglistCont=>line 52: Err -> ' + err);
     }
@@ -80,18 +94,6 @@ exports.getBlog = async (req, res) => {
                             visibility: ["6624ddb05ecb701aa0f79299", "6624dda25ecb701aa0f79293"]  // protected  //public
                         } ]
                     }
-                    // const userID = blog.creater;
-                    // if (userID == decodedToken.id) {
-                    //     filter = {
-                    //         _id: id
-                    //     }
-                    // } else {
-                    //     filter = {
-                    //         _id: id,
-                    //         status: "6624da5cd39d33ee85c58151", // approved 
-                    //         visibility: ["6624ddb05ecb701aa0f79299", "6624dda25ecb701aa0f79293"]  // protected  //public
-                    //     }
-                    // }
                 }
             })
         } else {
